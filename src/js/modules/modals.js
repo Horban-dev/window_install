@@ -33,7 +33,9 @@ const modals = () => {
         }, time);
     }
     bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
+    bindModal('.popup_calc_btn', '.popup_calc', '.popup_calc_close');
     bindModal('.phone_link', '.popup', '.popup .popup_close');
+
     
 }
 export default modals;
