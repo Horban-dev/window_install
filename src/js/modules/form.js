@@ -1,7 +1,10 @@
+import checkNumInputs from "./checkNumInputs";
+
 const forms = () => {
     const form = document.querySelectorAll('form'),
           input = document.querySelectorAll('input');
 
+    checkNumInputs('input[name="user_phone"]')
     const message = {
         loading: 'Loading...',
         success: 'Tnanks! We will call you back later',
