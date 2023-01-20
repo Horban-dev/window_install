@@ -30,6 +30,13 @@ const forms = () => {
             let statusMessage = document.createElement('div') 
             statusMessage.classList.add('status')
             item.appendChild(statusMessage)
+            const formData = new FormData(item);
+            if (item.getAttribute('data-calc') === "end") {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
+
             postDate('assets/server.php', FormData) 
                     .then(res => {
                         console.log(res)
