@@ -18,6 +18,21 @@ body {
   color: red;
 }
 
+.clickAnimation {
+  animation-name: clickAnimation;
+  animation-duration: 1.5s;
+}
+
+@keyframes clickAnimation {
+  from {
+    opacity: 0.1;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 a:hover {
   text-decoration: none;
 }

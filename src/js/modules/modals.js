@@ -3,7 +3,8 @@ const modals = () => {
         const   open = document.querySelectorAll(initialSelector),
                 modal = document.querySelector(modalSelector),
                 close = document.querySelector(closeModalSelector),
-                window = document.querySelectorAll('[data-modal]');
+                window = document.querySelectorAll('[data-modal]'),
+                scroll = calcScroll();
         open.forEach(item => {
             item.addEventListener('click', (e) => {
                 if(e.target) {
@@ -14,6 +15,7 @@ const modals = () => {
                 })
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden'
+                document.body.style.marginRight = `${scroll}px`
             })
         })
             
@@ -23,7 +25,7 @@ const modals = () => {
             })
             modal.style.display = 'none';
             document.body.style.overflow = "";
-            
+            document.body.style.marginRight = `0px`
         })
         modal.addEventListener('click', (e) => {
             if(e.target === modal && closeClickOut) {
@@ -32,6 +34,7 @@ const modals = () => {
                 })
                 modal.style.display = 'none';
                 document.body.style.overflow = "";
+                document.body.style.marginRight = `0px`
             }
         })
     }
@@ -41,6 +44,15 @@ const modals = () => {
             document.querySelector(selector).style.display = 'block';
             document.body.style.overflow = "hidden";
         }, time);
+    }
+
+    function calcScroll() {
+        let div = document.createElement('div')
+        div.style.cssText = 'width:50px; height:50px; overflowY:scroll; visibillity:hidden;'
+        document.body.appendChild(div)
+        let scrollWidth = div.offsetWidth - div.clientWidth
+        div.remove()
+        return scrollWidth
     }
     bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
     bindModal('.popup_calc_btn', '.popup_calc', '.popup_calc_close');
